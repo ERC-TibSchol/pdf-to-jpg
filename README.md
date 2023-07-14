@@ -10,15 +10,13 @@ This project has received funding from the European Research Council (ERC) under
 
 - `pdf2image` library
 
+This script relies on the `pdf2image` library, which is built on top of Poppler for PDF rendering. Make sure you have Poppler installed on your system and provide the correct path to `poppler_path` parameter in the `convert_from_path` function.
+
+For more information on the library, see [pdf2image documentation](https://github.com/Belval/pdf2image).
+
 # Usage
 
 1. Specify the path to your PDF file by modifying the `pdf_path` variable in the script
 2. Specify the output folder where the converted JPG images will be saved by modifying the `output_folder` variable in the script
 3. The script will create the output folder if it doesn't exist already
 4. The JPG images will be named as `page_1.jpg`, `page_2.jpg`, and so on, corresponding to the page numbers in the PDF
-
-# Acknowledgments
-
-This script relies on the `pdf2image` library, which is built on top of Poppler for PDF rendering. Make sure you have Poppler installed on your system and provide the correct path to `poppler_path` parameter in the `convert_from_path` function.
-
-For more information on the library, see [pdf2image documentation](https://github.com/Belval/pdf2image).
