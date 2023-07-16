@@ -10,7 +10,7 @@ This project has received funding from the European Research Council (ERC) under
 
 - `pdf2image` library
 
-This script relies on the `pdf2image` library, which is built on top of Poppler for PDF rendering. Make sure you have Poppler installed on your system and provide the correct path to `poppler_path` parameter in the `convert_from_path` function.
+This script relies on the `pdf2image` library, which is built on top of Poppler for PDF rendering. Install Poppler on your system and provide the correct path to `poppler_path` parameter in the `convert_from_path` function.
 
 For more information on the library, see [pdf2image documentation](https://github.com/Belval/pdf2image).
 
