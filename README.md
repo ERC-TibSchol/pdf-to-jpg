@@ -17,6 +17,5 @@ For more information on the library, see [pdf2image documentation](https://githu
 # Usage
 
 1. Specify the path to your PDF file by modifying the `pdf_path` variable in the script
-2. Specify the output folder where the converted JPG images will be saved by modifying the `output_folder` variable in the script
-3. The script will create the output folder if it doesn't exist already
-4. The JPG images will be named as `page_1.jpg`, `page_2.jpg`, and so on, corresponding to the page numbers in the PDF
+2. Specify the output folder where the converted JPG images will be saved by modifying the `output_folder` variable in the script. The script will create the output folder if it doesn't exist already
+3. The JPG images will be named as `page_1.jpg`, `page_2.jpg`, and so on, corresponding to the page numbers in the PDF
