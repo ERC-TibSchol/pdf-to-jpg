@@ -56,7 +56,7 @@ def main():
     parser.add_argument("pdf_path", help="Path to the PDF file.")
     parser.add_argument("output_folder", help="Path to the output folder.")
     parser.add_argument("--split", action="store_true", help="Split the PDF into smaller parts.")
-    parser.add_argument("--chunk_size", type=int, default=10, help="Number of pages per chunk (if split is enabled).")
+    parser.add_argument("--chunk_size", type=int, default=20, help="Number of pages per chunk (if split is enabled).")
     args = parser.parse_args()
 
     # Check if the PDF should be split or converted as a whole
