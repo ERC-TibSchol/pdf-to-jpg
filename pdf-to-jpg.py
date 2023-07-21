@@ -37,7 +37,7 @@ def split_pdf(pdf_path, output_folder, chunk_size=10):
 
 def pdf_to_jpg(pdf_path, output_folder, start_page_number=1):
     # Convert PDF pages to images
-    images = convert_from_path(pdf_path, poppler_path=r"C:\Users\Racha\OneDrive\Documents\poppler-0.68.0_x86\poppler-0.68.0\bin")
+    images = convert_from_path(pdf_path, poppler_path=r"path/to/poppler/bin")
 
     print("Converting PDF to JPG...")
 
