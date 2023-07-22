@@ -50,3 +50,4 @@ Run the script with the following command:
 
    This will split the PDF into chunks of 20 pages each and convert each chunk to JPG images. The `processed_pages` variable will keep track of the total processed pages, ensuring that the page numbers are incremented appropriately. 
 
+The chunks are removed once the program finishes executing.
