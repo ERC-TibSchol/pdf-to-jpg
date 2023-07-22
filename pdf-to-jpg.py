@@ -2,8 +2,10 @@ import os
 import argparse
 from pdf2image import convert_from_path
 from PyPDF2 import PdfReader, PdfWriter
+import tempfile
+import shutil
 
-def split_pdf(pdf_path, output_folder, chunk_size=10):
+def split_pdf(pdf_path, output_folder, chunk_size=20):
     # Create the output folder if it doesn't exist
     os.makedirs(output_folder, exist_ok=True)
 
@@ -15,6 +17,7 @@ def split_pdf(pdf_path, output_folder, chunk_size=10):
 
     # Split the PDF into chunks
     processed_pages = 0
+    chunk_pdf_paths = []  # Store the paths of all chunked PDFs
     for chunk_number, chunk_start in enumerate(range(0, total_pages, chunk_size), start=1):
         chunk_end = min(chunk_start + chunk_size, total_pages)
 
@@ -33,7 +36,11 @@ def split_pdf(pdf_path, output_folder, chunk_size=10):
         # Update the total processed pages
         processed_pages += (chunk_end - chunk_start)
 
+        # Add the chunk PDF path to the list
+        chunk_pdf_paths.append(chunk_output_path)
+
     print("PDF splitting complete!")
+    return chunk_pdf_paths
 
 def pdf_to_jpg(pdf_path, output_folder, start_page_number=1):
     # Convert PDF pages to images
@@ -61,19 +68,19 @@ def main():
 
     # Check if the PDF should be split or converted as a whole
     if args.split:
-        split_pdf(args.pdf_path, args.output_folder, chunk_size=args.chunk_size)
+        temp_dir = tempfile.mkdtemp()
+        try:
+            chunk_pdf_paths = split_pdf(args.pdf_path, temp_dir, chunk_size=args.chunk_size)
 
-        # Process each part and convert to JPG
-        processed_pages = 0
-        for chunk_number, file in enumerate(os.listdir(args.output_folder), start=1):
-            if file.endswith(".pdf"):
-                chunk_pdf_path = os.path.join(args.output_folder, file)
-                pdf_to_jpg(chunk_pdf_path, args.output_folder, start_page_number=processed_pages + 1)
-
-                # Update the total processed pages after each chunk
+            # Process each part and convert to JPG
+            processed_pages = 0
+            for chunk_pdf_path in chunk_pdf_paths:
                 with open(chunk_pdf_path, "rb") as chunk_file:
-                    chunk_pdf = PdfReader(chunk_file)
-                    processed_pages += len(chunk_pdf.pages)
+                    pdf_to_jpg(chunk_pdf_path, args.output_folder, start_page_number=processed_pages + 1)
+                    processed_pages += len(PdfReader(chunk_file).pages)
+        finally:
+            # Delete the temporary directory and its contents (chunks)
+            shutil.rmtree(temp_dir)
 
     else:
         pdf_to_jpg(args.pdf_path, args.output_folder)
