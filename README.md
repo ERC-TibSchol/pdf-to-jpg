@@ -1,6 +1,6 @@
 # PDF to JPG Converter
 
-[DOI: 10.5281/zenodo.10450672](https://zenodo.org/records/10450672)
+[![DOI](https://zenodo.org/badge/666410802.svg)](https://zenodo.org/doi/10.5281/zenodo.10450671)
 
 A script that converts a PDF file into a series of JPG images. It utilises `pdf2image` library to perform the conversion and `PyPDF2` library for splitting PDFs for processing, if needed.
 
