@@ -1,5 +1,7 @@
 # PDF to JPG Converter
 
+[DOI: 10.5281/zenodo.10450672](https://zenodo.org/records/10450672)
+
 A script that converts a PDF file into a series of JPG images. It utilises `pdf2image` library to perform the conversion and `PyPDF2` library for splitting PDFs for processing, if needed.
 
 The script was created for the ERC project *The Dawn of Tibetan Buddhist Scholasticism (11th-13th c.) (TibSchol)*. Cf. [https://www.oeaw.ac.at/projects/tibschol](https://www.oeaw.ac.at/projects/tibschol) for more information.
